@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyh.dao.CustomerMapper">
+
+    <!--id是和dao层中的方法名一样 -->
+
+    <select id="query" resultType="Customer">
+
+    select * from t_customer
+    </select>
+    
+    <insert id="addCustomer" parameterType="Customer">
+        insert into t_customer(username,jobs,phone)
+        values (#{username},#{jobs},#{phone})
+
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from t_customer
+        where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="Customer">
+        update t_customer
+        set username=#{username},jobs=#{jobs},phone=#{phone}
+        where id=#{id}
+    </update>
+
+    <select id="findId" resultType="Customer">
+        select * from t_customer
+        where id=#{id}
+    </select>
+</mapper>
